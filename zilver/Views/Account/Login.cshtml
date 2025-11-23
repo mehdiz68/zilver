@@ -1,0 +1,13 @@
+﻿@using zilver.ViewModels
+@model LoginViewModel
+
+<h2>Login</h2>
+
+<form asp-action="Login" method="post">
+   
+    <input asp-for="Email" placeholder="Email" class="form-control" />
+    <input asp-for="Password" placeholder="Password" class="form-control" type="password" />
+    <input asp-for="RememberMe" type="checkbox" /> Remember me
+
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>

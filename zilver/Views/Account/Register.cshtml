@@ -3,8 +3,9 @@
 
 <h2>Register</h2>
 
-<form asp-action="Register">
+<form asp-action="Register" method="post">
     <input asp-for="Email" placeholder="Email" class="form-control" />
+    <input asp-for="Fullname" placeholder="Email" class="form-control" />
     <input asp-for="Password" placeholder="Password" type="password" class="form-control" />
     <input asp-for="ConfirmPassword" placeholder="Confirm Password" type="password" class="form-control" />
 

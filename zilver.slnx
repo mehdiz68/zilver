@@ -1,3 +1,7 @@
 <Solution>
+  <Project Path="zilver.auth/zilver.auth.csproj" Id="7384bbac-039f-4d76-8aa5-9fc9b707a460" />
+  <Project Path="zilver.data/zilver.data.csproj" Id="df9afc96-fdd4-4e3b-89d8-14b8b2d6d74a" />
+  <Project Path="zilver.domain/zilver.domain.csproj" Id="b030fa58-d889-42c4-8b85-4295d2cebc4b" />
+  <Project Path="zilver.services/zilver.services.csproj" Id="f5a27088-3eb6-47c9-a862-af591cedef31" />
   <Project Path="zilver/zilver.csproj" />
 </Solution>

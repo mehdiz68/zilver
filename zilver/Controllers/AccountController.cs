@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using zilver.Models;
+using zilver.domain.Entities;
 using zilver.ViewModels;
 
 namespace zilver.Controllers
@@ -50,6 +50,7 @@ namespace zilver.Controllers
 
             var user = new ApplicationUser
             {
+                FullName=model.Fullname,
                 UserName = model.Email,
                 Email = model.Email
             };

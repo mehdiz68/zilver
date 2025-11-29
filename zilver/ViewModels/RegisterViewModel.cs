@@ -12,6 +12,9 @@ namespace zilver.ViewModels
         public string Password { get; set; }
 
         [Required]
+        public string Fullname { get; set; }
+
+        [Required]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
     }

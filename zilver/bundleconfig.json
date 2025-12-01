@@ -1,24 +1,38 @@
-﻿// Configure bundling and minification for the project.
-// More info at https://go.microsoft.com/fwlink/?LinkId=808241
-[
+﻿[
   {
-    "outputFileName": "wwwroot/css/site.min.css",
-    // An array of relative input file paths. Globbing patterns supported
+    "outputFileName": "wwwroot/lib/css/bundlev2.css",
     "inputFiles": [
-      "wwwroot/css/site.css"
+      "wwwroot/css/main.css",
+      "wwwroot/css/master.css",
+      "wwwroot/css/font.css",
+      "wwwroot/css/owl.carousel.min.css",
+      "wwwroot/css/bootstrap-modal.min.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/js/site.min.js",
+    "outputFileName": "wwwroot/lib/js/bundleVendorv2.js",
     "inputFiles": [
-      "wwwroot/js/site.js"
-    ],
-    // Optionally specify minification options
-    "minify": {
-      "enabled": true,
-      "renameLocals": true
-    },
-    // Optinally generate .map file
-    "sourceMap": false
+      "wwwroot/js/jquery-3.6.1.min.js",
+      "wwwroot/js/bootstrap-modal.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/js/bundlev2.js",
+    "inputFiles": [
+      "wwwroot/js/lazysizes.min.js",
+      "wwwroot/js/jquery.unobtrusive-ajax.js",
+      "wwwroot/js/jquery.validate.js",
+      "wwwroot/js/jquery.validate.unobtrusive.js",
+      "wwwroot/js/jquery.countdown.min.js",
+      "wwwroot/js/master.js",
+      "wwwroot/js/main.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/css/indexv2.css",
+    "inputFiles": [
+      "wwwroot/css/views/index.css"
+    ]
   }
+
 ]

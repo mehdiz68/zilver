@@ -1,0 +1,267 @@
+@font-face {
+  font-display: swap;
+  font-family: IRANYekan;
+  src: url(../fonts/ShemsheTalaIcon.woff);
+  src: url(../fonts/ShemsheTalaIcon.woff) format("woff"),
+    url(../fonts/ShemsheTalaIcon.woff2) format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: IRANYekan-medium;
+  src: url(../fonts/ShemsheTalaTITR.woff);
+  src: url(../fonts/ShemsheTalaTITR.woff) format("woff"),
+    url(../fonts/ShemsheTalaTITR.woff2) format("woff2");
+}
+
+.shemsh,
+[class^="shemsh-"],
+[class*=" shemsh-"] {
+  font-family: "IRANYekan" !important;
+  speak: none;
+  text-transform: none;
+  font-weight: unset !important;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.shemsh-instagram:before {
+  content: "Á";
+}
+.shemsh-facebook:before {
+  content: "É";
+}
+.shemsh-twitter:before {
+  content: "Ü";
+}
+.shemsh-youtube:before {
+  content: "²";
+}
+.shemsh-aparat:before {
+  content: "¦";
+}
+.shemsh-telegram:before {
+  content: "»";
+}
+.shemsh-whatsapp:before {
+  content: "ú";
+}
+.shemsh-verified:before {
+  content: "«";
+}
+.shemsh-safezone:before {
+  content: "å";
+}
+.shemsh-support:before {
+  content: "§";
+}
+.shemsh-call:before {
+  content: "Ý";
+}
+.shemsh-close:before {
+  content: "ù";
+}
+.shemsh-search:before {
+  content: "ü";
+}
+.shemsh-home:before {
+  content: "ø";
+}
+.shemsh-long-arrow-right:before {
+  content: "í";
+}
+.shemsh-long-arrow-left:before {
+  content: "ï";
+}
+.shemsh-arrow-right:before {
+  content: "ì";
+}
+.shemsh-arrow-left:before {
+  content: "ß";
+}
+.shemsh-star:before {
+  content: "š";
+}
+.shemsh-like:before {
+  content: "Æ";
+}
+.shemsh-dislike:before {
+    content: "Æ";
+    transform:rotate(180deg)
+}
+.shemsh-tag:before {
+  content: "ý";
+}
+.shemsh-tag-o:before {
+    content: "þ";
+}
+.shemsh-user:before {
+  content: "¿";
+}
+.shemsh-bell:before {
+  content: "È";
+}
+.shemsh-blog:before {
+  content: "ô";
+}
+.shemsh-Humburgur:before {
+  content: "õ";
+}
+.shemsh-Humburgur-o:before {
+    content: "ë";
+}
+.shemsh-basket:before {
+  content: "ª";
+}
+.shemsh-video:before {
+  content: "°";
+}
+.shemsh-video-o:before {
+  content: "â";
+}
+.shemsh-pause:before {
+  content: "ć";
+}
+.shemsh-logout:before {
+    content: "ē";
+}
+.shemsh-variety:before {
+    content: "ĕ";
+}
+.shemsh-film:before {
+    content: "Œ";
+}
+.shemsh-senevtytwo:before {
+    content: "˜";
+}
+.shemsh-stop:before {
+    content: "â";
+}
+.shemsh-question:before {
+    content: "ð";
+}
+.shemsh-refresh:before {
+    content: "ñ";
+}
+.shemsh-email:before {
+    content: "û";
+}
+.shemsh-filter:before {
+    content: "ó";
+}
+.shemsh-copy:before {
+    content: "ô";
+}
+.shemsh-garantue:before {
+    content: "ö";
+}
+.shemsh-heart:before {
+    content: "÷";
+}
+.shemsh-share:before {
+    content: "ÿ";
+}
+.shemsh-plus:before {
+    content: "Þ";
+}
+.shemsh-minus:before {
+    content: "à";
+}
+.shemsh-info:before {
+    content: "á";
+}
+.shemsh-info-o:before {
+    content: "¸";
+}
+.shemsh-basket-shopping:before {
+    content: "ã";
+}
+.shemsh-discount:before {
+    content: "ä";
+}
+.shemsh-unboxing:before {
+    content: "æ";
+}
+.shemsh-bookmark:before {
+    content: "ç";
+}
+.shemsh-newspaper:before {
+    content: "è";
+}
+.shemsh-global:before {
+    content: "é";
+}
+.shemsh-peyk:before {
+    content: "ê";
+}
+.shemsh-share-o:before {
+    content: "µ";
+}
+.shemsh-podcast:before {
+    content: "¶";
+}
+.shemsh-compare:before {
+    content: "·";
+}
+.shemsh-support-o:before {
+    content: "¹";
+}
+.shemsh-flash:before {
+    content: "º";
+}
+.shemsh-call-o:before {
+    content: "¼";
+}
+.shemsh-percent:before {
+    content: "½";
+}
+.shemsh-shopping:before {
+    content: "¾";
+}
+.shemsh-return-money:before {
+    content: "À";
+}
+.shemsh-monitor:before {
+    content: "Ç";
+}
+.shemsh-notification:before {
+    content: "È";
+}
+.shemsh-support-o2:before {
+    content: "¡";
+}
+.shemsh-mobile:before {
+    content: "¢";
+}
+.shemsh-headphone:before {
+    content: "£";
+}
+.shemsh-drone:before {
+    content: "¤";
+}
+.shemsh-water:before {
+    content: "¥";
+}
+.shemsh-aparat:before {
+    content: "¦";
+}
+.shemsh-support-o-3:before {
+    content: "§";
+}
+.shemsh-compare-o:before {
+    content: "¨";
+}
+.shemsh-share-o2:before {
+    content: "©";
+}
+.shemsh-change-number:before {
+    content: "®";
+}
+.shemsh-go-top:before {
+    content: "³";
+}
+.shemsh-filter:before {
+    content: "´";
+}
+.shemsh-favorate:before {
+    content: "±";
+}

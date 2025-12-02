@@ -11,6 +11,9 @@ namespace zilver.ViewModels
         public JsToolsViewModel()
         {
 
+            WebmasterVerification = string.Empty;
+
+            AnalyticsVerification = string.Empty;
         }
         #region Properties
 

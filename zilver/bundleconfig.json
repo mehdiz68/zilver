@@ -33,6 +33,12 @@
     "inputFiles": [
       "wwwroot/css/views/index.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/js/indexv2.js",
+    "inputFiles": [
+      "wwwroot/js/index.js"
+    ]
   }
 
 ]

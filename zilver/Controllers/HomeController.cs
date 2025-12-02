@@ -2,7 +2,7 @@
 
 namespace zilver.Controllers
 {
-    public class Home : Controller
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {

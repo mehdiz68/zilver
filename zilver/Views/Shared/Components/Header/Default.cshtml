@@ -1,0 +1,645 @@
+﻿@model zilver.ViewModels.HeaderViewModel
+<header id="header">
+
+
+   @*  @if (Model.TopAds != null)
+    {
+        int SumSize = 0;
+        <div class="ads">
+            @foreach (var Adveresting in Model.TopAds)
+            {
+
+                SumSize += CoreLib.Infrastructure.CommonFunctions.GetSizeColumn(Adveresting.AdverestingSizeId);
+                <div class="single_banner Adveresting Position-@Adveresting.Position Size-@Adveresting.AdverestingSizeId @(SumSize == 12 ? "lastbox" : "")">
+                    <a href="@(Adveresting.TypeLink == false ? Adveresting.Link : "/Ads/" + Adveresting.Id)" title="@Adveresting.Title">
+
+                        <img src="@Html.DisplayattachmentUrl(Adveresting.attachmentFileName)"
+                             data-src="@Html.DisplayattachmentUrl(Adveresting.attachmentFileName)"
+                             alt="@Adveresting.Title"
+                             title="@Adveresting.Title"
+                             class="lazyload attachment-full size-full" />
+                    </a>
+                </div>
+            }
+        </div>
+    } *@
+
+@*     @if (Model.PopUpActive)
+    {
+        <!-- Home Popup Section -->
+        <div class="modal fade subscribe_popup" id="onload-popup" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                @if (Model.PopUpType)
+                {
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span style="opacity:1" class="close red" data-dismiss="modal">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            @Html.Raw(Model.PopUpMessage)
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-2" data-dismiss="modal">بستن</button>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <!-- Modal content-->
+                    <div class="modal-content transparent">
+                        <div class="modal-header">
+                            <span style="opacity:1" class="close red" data-dismiss="modal">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            @Html.Raw(Model.PopUpMessage)
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- End Screen Load Popup Section -->
+    } *@
+
+    <div id="mobile-call">
+        <div class="row">
+            <div class="col-md-6">
+                <p>شماره تماس مشاوره و پشتیبانی:</p>
+            </div>
+            <div class="col-md-6">
+                <a href="tel:۰۲۱۸۸۳۱۴۴۷۹">۰۲۱۸۸۳۱۴۴۷۹</a>
+            </div>
+        </div>
+    </div>
+    <div id="topHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" id="header-search">
+                    <input class="form form-control search_input" placeholder="جستجو" />
+                    <i class="shemsh shemsh-search"></i>
+
+                    <div id="SearchList">
+
+                        <div class="ProductList">
+                            <div class="prs">
+                            </div>
+                            <div class="content">
+                            </div>
+                            <div class="continue"></div>
+                        </div>
+                        <div class="LogList">
+                            <h4><span class="fa fa-fire"></span> جستجوهای داغ</h4>
+
+                            <div class='log'><a href="#" target="_blank">نقره مردانه</a></div>
+                            <div class='log'><a href="#" target="_blank">نقره زنانه</a></div>
+                            <div class='log'><a href="#" target="_blank">نقره لاکچری</a></div>
+                            <div class='log'><a href="#" target="_blank">نقره اقتصادی</a></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" id="header-basket">
+                    <ul>
+                        <li id="header-call">
+                            <span>
+                                <i class="shemsh shemsh-call"></i>
+                                <span> مشاوره و پشتیبانی :</span>
+                                <a href="tel:۰۲۱۸۸۳۱۴۴۷۹">۰۲۱۸۸۳۱۴۴۷۹</a>
+                            </span>
+                        </li>
+                        <li id="basket-header">
+                            <span>
+                                <i class="shemsh shemsh-basket"></i>
+                                <span class="num">0</span>
+                                <span>سبد خرید</span>
+                            </span>
+                            @* @Html.Partial("_BasketV2", Model.Baskets == null ? new Domain.ViewModels.BasketShort() : Model.Baskets) *@
+                        </li>
+                        <li>
+                            <span>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    if (User.IsInRole("Admin") || User.IsInRole("SuperUser") || User.IsInRole("Support") || User.IsInRole("Security"))
+                                    {
+                                        <a href="/Admin" rel="nofollow"> پنل مدیریت </a>
+                                        <a class="llmmob" href="/Admin" rel="nofollow"><i class="shemsh shemsh-user"></i></a>
+                                    }
+                                    else
+                                    {
+
+                                        <a href="/Profile"> پروفایل کاربری </a>
+                                        <a class="llmmob" href="/Profile" rel="nofollow"><i class="shemsh shemsh-user"></i></a>
+                                    }
+                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <a href="javascript:document.getElementById('logoutForm').submit()" class="headUser_entriesLink js-logout" rel="nofollow">خروج</a>
+                                        <i onclick="javascript:document.getElementById('logoutForm').submit()" class="shemsh shemsh-logout"></i>
+                                    }
+                                }
+                                else
+                                {
+
+                                    <a class="llmmob" href="/Account/Login"><i class="shemsh shemsh-user"></i></a>
+                                    <a href="/Account/Login">ثبت نام / ورود</a>
+
+                                }
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6" id="mobile-logo">
+                    <a href="/">
+                        <img src="/images/pre.png"
+                             data-src="@Model.logo"
+                             alt="للیمند"
+                             title="lelimond"
+                             class="lazyload attachment-full size-full"
+                             width="250"
+                             height="236" />
+                    </a>
+                </div>
+                <div class="col-md-2" id="mob-men">
+                    <i class="header-mm shemsh shemsh-Humburgur"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bottomHeader" class="container">
+
+
+        <div class="row">
+            <div class="col-md-12" id="header-search-mobile">
+                <input class="form form-control search_input" placeholder="جستجو" />
+                <i class="shemsh shemsh-search"></i>
+            </div>
+            <div class="col-md-12" id="mainmenu">
+                <div class="mainmenu">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="/s/7/جستجو،-مقایسه-و-خرید-شمش-طلا،-شمش-24-عیار-با-استاندارد-T99">محصولات</a>
+                                <ul class="desk-submenu">
+                                    <li>
+                                        <a href="/s/2041/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلای-نفیس-طلا-و-نقره">شمش های نفیس</a>
+
+                                        <ul>
+                                            <li>
+                                                <a href="https://shemshetala.com/p/1287">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productprice/MD_898ccc92-29e3-403f-9877-1f9ac23d7a7f.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش یلدا</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/1295">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productprice/MD_8a36d884-9ae6-4d2e-a263-0c18904743e2.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش منشور حقوق بشر</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/1294">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productprice/MD_be460b2b-2ef2-487b-b7e5-690e563b55b7.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش ملکه گلها</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/1293">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productprice/MD_97c4f9e7-4faf-4771-905c-0cd7f4418e94.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش تولد</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/1292">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productprice/MD_2cf67305-b92e-4874-8e05-2fb2d462ec4d.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش پروانه</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/1270">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productprice/MD_c59f1af6-6203-48bf-9c0a-53a207db730c.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش کوروش</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://shemshetala.com/p/1289">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_3a588f9f-f0af-4587-b377-68cc6e0ed71e.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش گل رز</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://shemshetala.com/p/1288">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productprice/MD_ef3db7e9-03d2-4d46-bbf9-e02c37c1518c.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش گل‌های داوودی</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/225/">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productprice/MD_82d28fd5-fd97-4c97-a0f8-fb63d8392c42.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش فروهر</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/229">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productprice/MD_d40aa13d-83fe-46fd-a8fb-a30f9bcd8598.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش پاسارگاد</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/93">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_a0d669c0-e67f-4c85-96bc-7c8fa9263cb6.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش فرشته</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/224">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productprice/MD_1417e244-0026-4cc4-9b14-460950bb7771.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش حافظیه</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/230">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productprice/MD_7c8fba81-dac5-49b0-aa98-7937043340ef.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش آزادی</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/264">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productprice/MD_96693c9c-ea18-40f2-a56f-4bbcf402bb67.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش نفیس شادی ( ساده )</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/s/2045/جستجو،-مقایسه-و-خرید-کارت-های-فرکانس-شمش-طلا">کارت های فرکانس</a>
+
+                                        <ul>
+                                            <li>
+                                                <a href="/s/2103/جستجو،-مقایسه-و-خرید-شمش-طلای-نقش-برجسته-گل-و-بلبل">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productcategories/LG_a2326e2c-102c-4567-9d25-e8a1fa83cd54.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> گل و بلبل</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/s/2040/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلای-نقش-برجسته-پرنیا">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/productcategories/LG_41640273-6dd6-474f-a832-c5c5a11b9058.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> پرنیا</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/s/2050/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلای-نقش-برجسته-آناهیتا-کارت-های-فرکانس">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_0936ae44-b3e0-4b7a-aaed-26be2d8e3917.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> آناهیتا</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/s/2049/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلای-نقش-برجسته-وان-یکاد-کارت-های-فرکانس">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_d024db78-3b15-4d11-b3f2-c2df0b3cd3e4.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> وان یکاد</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/s/2039/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلا-نقش-برجسته-با-کارت-فلزی">کارت طلایی</a>
+
+                                        <ul>
+                                            <li>
+                                                <a href="/s/30/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلای-نقش-برجسته-ونوس-کارت-فلزی">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_234bcba2-799d-4da1-8fcc-d66781a97d99.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> ونوس</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/73">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_3cb7cfb1-41b1-4b4a-86ea-1a7f55c13d95.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش طلا بوعلی سینا</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/s/2101/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلا-ویژه-کودکان">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_f75035e7-cfe3-4a7f-bf35-0eeca96dfa85.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش طلا ویژه کودکان</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/s/2032/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلای-نقش-برجسته-یادبود-مناسبت">یادبود مناسبت ها</a>
+
+                                        <ul>
+                                            <li>
+                                                <a href="https://shemshetala.com/p/48">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_3ed3c8f1-1a06-42df-a98f-1c22dd88c5d7.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش مادر</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://shemshetala.com/p/49">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_b6f4c503-82d4-4b52-9d99-0df3ad02b302.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش استاد شجریان</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://shemshetala.com/p/47">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_05740eb3-4df5-4333-981d-2b30efbfa998.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> شمش حرم امام حسین</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/1301">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_8638d0da-f959-4e0a-99bb-0d3a91b2edad.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> تمبر نقره استاد شهریار</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.shemshetala.com/s/2100/پک-کادوی-خاص-شمش-طلا">پک هدیه شمش طلا</a>
+
+                                        <ul>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/1281">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_277c1513-07bf-4af0-aaea-6dab5a3c23e7.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> هدیه روز پزشک، تمبر طلای ابن سینا</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/1300">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_9c10515d-a8b6-40a0-8499-364cbb34ce5b.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> هدیه روز پزشک، تمبر نقره ابن سینا</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/1335">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_f93b76c3-8579-4a96-a497-885b2bfad048.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> پک نوروزی با طرح سکه ۱۴۰۴ و طرح مار</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/1336">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_d26d29dc-8f1d-4a19-b8a5-5ce352032015.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> پک نوروزی با طرح مار نماد سال ۱۴۰۴</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/1337">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_3dd29f75-c5fe-4b7c-bb29-25a4c2c7dc83.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> پک نوروزی با طرح سکه ۱۴۰۴</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.shemshetala.com/p/1338">
+                                                    <img src="/Content/theme/images/pre.png" data-src="/Content/UploadFiles/menus/MD_33cbc86c-ade2-4c93-abaf-31f87a4d4368.png" alt="محصولات" title="محصولات" class="lazyload" width="100" height="100">
+                                                    <span> پک نوروزی با طرح سیب هفت سین</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/s/2042/جستجو،-مقایسه-و-خرید-آنلاین-تابلوهای-نقش-برجسته-از-شمش-طلا-و-نقره">تابلوهای نقش برجسته</a>
+
+                                        <ul>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="https://shemshetala.com/t/26/%D8%B4%D9%85%D8%B4-%D8%B3%D8%B1%D9%85%D8%A7%DB%8C%D9%87?page=1&amp;sort=6">شمش سرمایه</a>
+
+                                        <ul>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/contact">پشتیبانی</a>
+                            </li>
+                            <li>
+                                <a href="/CheckOriginality">اصالت محصول</a>
+                            </li>
+                            <li id="logo-menu">
+                                <a href="/">
+                                    <img src="/images/pre.png"
+                                         data-src="@Model.logo"
+                                         alt="للیمند"
+                                         title="lelimond"
+                                         class="lazyload attachment-full size-full"
+                                         width="250"
+                                         height="236" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.shemshetala.com/landings/wholesale">فروش سازمانی</a>
+                            </li>
+                            <li>
+                                <a href="https://www.shemshetala.com/Representations">نمایندگی‌ها</a>
+                            </li>
+                            <li>
+                                <a href="https://www.shemshetala.com/joinUs">همکاری با ما</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="menumobile" class="">
+        <div class="title-mm">
+            <a href="/">
+                <img src="/images/pre.png"
+                     data-src="@Model.logo"
+                     alt="للیمند"
+                     title="lelimond"
+                     class="lazyload attachment-full size-full"
+                     width="250"
+                     height="236" />
+            </a>
+            <span id="nomenumobile"><i class="shemsh shemsh-close"></i></span>
+        </div>
+        <div class="main-mm">
+            <ul class="menu">
+                    <li class="menu-item menu-item-type-custom menu-item-has-children">
+                        <a href="/s/7/جستجو،-مقایسه-و-خرید-شمش-طلا،-شمش-24-عیار-با-استاندارد-T99">محصولات<span class="childer"><i></i></span></a>
+                            <ul class="sub-menu"><div class="title-sub-head"><span class="sub-closer float-left"><i></i></span><strong class="float-right title-subcome">بازگشت</strong></div>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                        <a href="/s/2041/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلای-نفیس-طلا-و-نقره">شمش های نفیس</a>
+                                        <ul>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://shemshetala.com/p/1287">شمش یلدا</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/1295">شمش منشور حقوق بشر</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/1294">شمش ملکه گلها</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/1293">شمش تولد</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/1292">شمش پروانه</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/1270">شمش کوروش</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://shemshetala.com/p/1289">شمش گل رز</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://shemshetala.com/p/1288">شمش گل‌های داوودی</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/225/">شمش فروهر</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/229">شمش پاسارگاد</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/93">شمش فرشته</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/224">شمش حافظیه</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/230">شمش آزادی</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/264">شمش نفیس شادی ( ساده )</a>
+                                                </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                        <a href="/s/2045/جستجو،-مقایسه-و-خرید-کارت-های-فرکانس-شمش-طلا">کارت های فرکانس</a>
+                                        <ul>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="/s/2103/جستجو،-مقایسه-و-خرید-شمش-طلای-نقش-برجسته-گل-و-بلبل">گل و بلبل</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="/s/2040/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلای-نقش-برجسته-پرنیا">پرنیا</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="/s/2050/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلای-نقش-برجسته-آناهیتا-کارت-های-فرکانس">آناهیتا</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="/s/2049/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلای-نقش-برجسته-وان-یکاد-کارت-های-فرکانس">وان یکاد</a>
+                                                </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                        <a href="/s/2039/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلا-نقش-برجسته-با-کارت-فلزی">کارت طلایی</a>
+                                        <ul>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="/s/30/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلای-نقش-برجسته-ونوس-کارت-فلزی">ونوس</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/73">شمش طلا بوعلی سینا</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="/s/2101/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلا-ویژه-کودکان">شمش طلا ویژه کودکان</a>
+                                                </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                        <a href="/s/2032/جستجو،-مقایسه-و-خرید-آنلاین-شمش-طلای-نقش-برجسته-یادبود-مناسبت">یادبود مناسبت ها</a>
+                                        <ul>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://shemshetala.com/p/48">شمش مادر</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://shemshetala.com/p/49">شمش استاد شجریان</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://shemshetala.com/p/47">شمش حرم امام حسین</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/1301">تمبر نقره استاد شهریار</a>
+                                                </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                        <a href="https://www.shemshetala.com/s/2100/پک-کادوی-خاص-شمش-طلا">پک هدیه شمش طلا</a>
+                                        <ul>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/1281">هدیه روز پزشک، تمبر طلای ابن سینا</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/1300">هدیه روز پزشک، تمبر نقره ابن سینا</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/1335">پک نوروزی با طرح سکه ۱۴۰۴ و طرح مار</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/1336">پک نوروزی با طرح مار نماد سال ۱۴۰۴</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/1337">پک نوروزی با طرح سکه ۱۴۰۴</a>
+                                                </li>
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                                    <a href="https://www.shemshetala.com/p/1338">پک نوروزی با طرح سیب هفت سین</a>
+                                                </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                        <a href="/s/2042/جستجو،-مقایسه-و-خرید-آنلاین-تابلوهای-نقش-برجسته-از-شمش-طلا-و-نقره">تابلوهای نقش برجسته</a>
+                                        <ul>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-service">
+                                        <a href="https://shemshetala.com/t/26/%D8%B4%D9%85%D8%B4-%D8%B3%D8%B1%D9%85%D8%A7%DB%8C%D9%87?page=1&amp;sort=6">شمش سرمایه</a>
+                                        <ul>
+                                        </ul>
+                                    </li>
+                            </ul>
+                    </li>
+                    <li class="menu-item menu-item-type-custom">
+                        <a href="/contact">پشتیبانی</a>
+                    </li>
+                    <li class="menu-item menu-item-type-custom">
+                        <a href="/CheckOriginality">اصالت محصول</a>
+                    </li>
+                    <li class="menu-item menu-item-type-custom">
+                        <a href="https://www.shemshetala.com/landings/wholesale">فروش سازمانی</a>
+                    </li>
+                    <li class="menu-item menu-item-type-custom">
+                        <a href="https://www.shemshetala.com/Representations">نمایندگی‌ها</a>
+                    </li>
+                    <li class="menu-item menu-item-type-custom">
+                        <a href="https://www.shemshetala.com/joinUs">همکاری با ما</a>
+                    </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        @if (User.IsInRole("Admin") || User.IsInRole("SuperUser") || User.IsInRole("Support") || User.IsInRole("Security"))
+                        {
+                            <a href="/Admin" rel="nofollow"> پنل مدیریت </a>
+                        }
+                        else
+                        {
+
+                            <a href="/Profile"> پروفایل کاربری </a>
+                        }
+                    </li>
+
+                    <li>
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:document.getElementById('logoutForm').submit()" class="headUser_entriesLink js-logout" rel="nofollow">خروج</a>
+                            <i class="shemsh shemsh-logout"></i>
+                        }
+                    </li>
+                }
+                else
+                {
+                    <li> <a href="/Account/Login/"><i class="shemsh shemsh-user"></i> ثبت نام / ورود</a></li>
+
+
+                }
+
+            </ul>
+        </div>
+
+    </div>
+
+</header>

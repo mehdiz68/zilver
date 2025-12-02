@@ -510,7 +510,7 @@ header #mobile-call a {
 }
 #logo-menu {
   position: relative;
-  min-width: 247px;
+  min-width: 127px;
   height: 39px;
 }
 #logo-menu a {
